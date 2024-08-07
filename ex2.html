@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContentOfWindow</title>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Click the button for Print the Window Content</h1>
+      <button class="printWindowContent">Print</button>
+    </div>
+    <script>
+      let button = document.querySelector(".printWindowContent");
+      function printWindowContent() {
+        window.print();
+      }
+      button.addEventListener("click", printWindowContent);
+    </script>
+  </body>
+</html>

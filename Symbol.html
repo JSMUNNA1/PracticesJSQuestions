@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button id="btn">NextPage</button>
+    <script>
+      function* pagination(array, pageSize) {
+        for (let i = 1; i < array.length; i += pageSize) {
+          yield array.slice(i, i + pageSize);
+        }
+      }
+
+      const arr = Array.from({ length: 100 }, (_, i) => `item ${i}`);
+      const pageSize = 10;
+      const pages = pagination(arr, pageSize);
+      //first time print page
+      let result = pages.next();
+      if (!result.done) {
+        display(result.value);
+      }
+      function display(result) {
+        const box = document.querySelector(".box");
+        box.innerHTML = `<ul>${result.map((el) => `<li>${el}</li>`).join("")}`;
+      }
+      document.querySelector("#btn").addEventListener("click", () => {
+        result = pages.next();
+        if (result.done) {
+        } else {
+          display(result.value);
+        }
+      });
+    </script>
+  </body>
+</html>

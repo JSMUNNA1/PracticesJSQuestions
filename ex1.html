@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time and Date</title>
+  </head>
+  <style>
+    .outerBox {
+      color: white;
+      width: 50%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      background-color: #2b3a08;
+    }
+    .box h2 {
+      width: 100%;
+    }
+  </style>
+  <body>
+    <center>
+      <div class="outerBox">
+        <div class="box"></div>
+      </div>
+    </center>
+    <script>
+      let box = document.querySelector(".box");
+      let tadayday = document.createElement("h2");
+      let time = document.createElement("h2");
+      function todayDay() {
+        let today = new Date();
+        let day = today.getDay();
+        let daylist = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        tadayday.innerHTML = `Today is ${daylist[day]}`;
+        let hours = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        box.appendChild(tadayday);
+        let amPM = hours >= 12 ? "PM" : "AM";
+        hour = hours >= 12 ? hours - 12 : hours;
+        if (hours === 0 && amPm === " PM ") {
+          if (minute === 0 && second === 0) {
+            hours = 12;
+            amPM = " Noon";
+          } else {
+            hours = 12;
+            amPM = " PM";
+          }
+        }
+        time.innerHTML = `Current time is : ${
+          hours + " " + amPM
+        } : ${minute} : ${second}`;
+
+        box.appendChild(time);
+      }
+
+      setInterval(todayDay, 1000);
+    </script>
+  </body>
+</html>

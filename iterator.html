@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function* abcs() {
+        yield "a";
+        yield "b";
+        yield "c";
+      }
+      console.log(abcs().next());
+      console.log(abcs().next());
+      console.log(abcs().next());
+      console.log(abcs);
+      for (let letter of abcs()) {
+        console.log(letter.toUpperCase());
+      }
+      console.log([...abcs()]);
+    </script>
+  </body>
+</html>

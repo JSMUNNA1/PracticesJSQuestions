@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button class="next">next</button>
+    <script>
+      function* pagination(array, pageSize) {
+        for (let i = 0; i < array.length; i += pageSize) {
+          yield array.slice(i, i + pageSize);
+        }
+      }
+
+      let largeData = Array.from({ length: 100 }, (_, i) => `Item ${i}`);
+      let pagina = pagination(largeData, 10);
+      //first page Display
+      let result = pagina.next();
+      if (!result.done) {
+        display(result.value);
+      }
+      function display(data) {
+        let box = document.querySelector(".box");
+        box.innerHTML = `<ul>${data.map((it) => `<li>${it}</li>`).join("")}`;
+      }
+      document.querySelector(".next").addEventListener("click", () => {
+        result = pagina.next();
+        if (!result.done) {
+          display(result.value);
+        } else {
+          alert("it is last Page>>>>");
+        }
+      });
+    </script>
+  </body>
+</html>

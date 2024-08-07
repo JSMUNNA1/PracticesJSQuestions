@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiply and Divided</title>
+  </head>
+  <style>
+    .outerBox {
+      background-color: #3c0324;
+      color: white;
+
+      border: 2px solid grey;
+      width: 50%;
+      height: 400px;
+    }
+  </style>
+  <body>
+    <center>
+      <div class="outerBox">
+        <h3>Calculator</h3>
+        <div class="box">
+          <label for="num1">Enter the Value:</label>
+          <input type="number" required name="num1" class="num1" /> <br />
+          <label for="num2">Enter the Value:</label>
+          <input type="number" required name="num2" class="num2" />
+        </div>
+        <div class="btnbox">
+          <button class="mul">Multiply</button>
+          <button class="div">Division</button>
+        </div>
+      </div>
+    </center>
+    <script>
+      let box = document.querySelector(".box");
+      let num1 = document.querySelector(".num1").value;
+      num1 = Number(num1);
+
+      let num2 = document.querySelector(".num2").value;
+      num2 = Number(num2);
+      let h3 = document.createElement("h3");
+      let btn1 = document
+        .querySelector(".mul")
+        .addEventListener("click", () => {
+          h3.innerHTML = `Result is:${num1 * num2}`;
+          box.appendChild(h3);
+        });
+      let btn2 = document
+        .querySelector(".div")
+        .addEventListener("click", () => {
+          h3.innerHTML = `Result is:${num1 / num2}`;
+          box.appendChild(h3);
+        });
+    </script>
+  </body>
+</html>

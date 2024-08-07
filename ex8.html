@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number</title>
+  </head>
+  <body>
+    <script>
+      function guess() {
+        let data = prompt("Guss the Number Between 1-10");
+        console.log("ddd" + data);
+        let num = Number(data);
+        let random = Math.floor(Math.random() * 10);
+        console.log(random);
+        if (num === random) {
+          let yes = prompt(
+            "Good!matched if you want next move the again filled number between 1-10"
+          );
+          if (yes) guess();
+        } else {
+          let yes = prompt("not Matched try again");
+          if (yes) guess();
+        }
+      }
+      guess();
+    </script>
+  </body>
+</html>
